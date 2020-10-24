@@ -1,26 +1,40 @@
 import React, { useState } from 'react';
-import { inputMask } from "./utils"
-
-
+import { acceptOnlyNumber, maskFloat, replaceLetter } from "./utils"
 
 
 const Input = () => {
 
   const [number, setNumber] = useState();
 
-  const handleChange = (evt) => {
-    setNumber(inputMask(evt.target.value))
+  const handleChangeKeyPress = evt => {
+    
+    
+    
+  }
+
+  const handleChangeKeyUp = evt => {
+    setNumber(
+      acceptOnlyNumber(evt.key)
+      ? maskFloat(evt.target.value + evt.key)
+      : evt.target.value
+    )
+
+   
   }
   
   return (
     <div className="Input">
       
       <input
-      value={number === 0 ? "" : number}
-      onChange={handleChange}
+      value={number}
+      onKeyPress={handleChangeKeyPress}
+      onKeyUp={handleChangeKeyUp}
       ></input>
+      <p>{number}</p>
     </div>
+    
   );
+
 }
 
 export default Input;

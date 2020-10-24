@@ -1,18 +1,32 @@
-export const inputMask = (val) => {
-  const onlyNumbersRegex = /\d/
-  const dotRegex = /\./g
-  const lettersRegex = /\D/g
+const onlyNumbersRegex = /\d/
+const dotRegex = /\./g
+const isNumberOrDot = (val) => onlyNumbersRegex.test(val) || dotRegex.test(val)
+const countDots = (val) => (val.match(dotRegex) || []).length
+const replaceDots = (val) => val.replace('.', '').replace(dotRegex, '').replace('', '.')
 
-  const isNumberOrDot = (val) => onlyNumbersRegex.test(val) || dotRegex.test(val)
-  const countDots = (val) => (String(val).match(dotRegex) || []).length
-  const replaceDots = (val) => String(val).replace(dotRegex, '').replace(lettersRegex, '')
-  
-  val = isNumberOrDot(val)
-    ? val = replaceDots(val)
-    : countDots(val)
 
+export const maskFloat = (val) => {
+  return val = replaceDots(val)
  
-  return val;
-
 }
 
+export const acceptOnlyNumber = (val) => 
+  // keypress
+    isNumberOrDot(val)
+      ? true 
+      : false
+
+export const maskInputToFloat = (val) => 
+  //keyup
+    (countDots(val) == 0) 
+      ? true
+      : maskFloat(val)
+
+export const maskInput = (val) => {
+  acceptOnlyNumber(val)
+  ? maskInputToFloat(val)
+  : ""
+  
+}
+
+console.log(replaceDots("1.222...1112233.."))
