@@ -26,6 +26,7 @@ const Input = () => {
     )
   }
 
+  
   const handleChangeKeyUp = evt => {
     
     console.log('handleChangeKeyUp', {inputValue}, {number})
