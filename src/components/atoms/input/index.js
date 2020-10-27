@@ -1,25 +1,29 @@
 import React, { useState } from 'react';
-import { acceptOnlyNumber, maskFloat, replaceLetter } from "./utils"
 
+const onlyNumbersRegex = /\d/
+const dotRegex = /\./g
+const isNumberOrDot = (val) => onlyNumbersRegex.test(val) || dotRegex.test(val)
+const countDots = (val) => (val.match(dotRegex) || []).length
+const replaceDots = (val) => val.replace('.', '_').replaceAll('.', '').replace('_', '.')
 
 const Input = () => {
 
   const [number, setNumber] = useState();
 
   const handleChangeKeyPress = evt => {
-    
-    
-    
+    setNumber(
+      (isNumberOrDot(evt.key))
+        ? evt.target.value + evt.key
+        : evt.preventDefault()
+    )
   }
 
   const handleChangeKeyUp = evt => {
     setNumber(
-      acceptOnlyNumber(evt.key)
-      ? maskFloat(evt.target.value + evt.key)
-      : evt.target.value
+      (countDots(evt.target.value + evt.key) == 0)
+        ? evt.target.value
+        : replaceDots(evt.target.value + evt.key)
     )
-
-   
   }
   
   return (
