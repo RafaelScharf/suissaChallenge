@@ -11,6 +11,7 @@ const Input = () => {
 
   const handleChangeKeyPress = evt => {
     
+    console.log('handleChangeKeyPress:', {evt}, evt.target.value, evt.key)
     setNumber(
       (isNumberOrDot(evt))
         ? evt.target.value + evt.key
@@ -19,6 +20,7 @@ const Input = () => {
   }
 
   const handleChangeKeyUp = evt => {
+    console.log('handleChangeKeyUp:', {evt}, evt.target.value, evt.key)
     setNumber(
       (countDots(evt) == 0)
         ? ( evt.keyCode == 8 )
@@ -39,7 +41,7 @@ const Input = () => {
     setNumber(
       (/[a-zA-Z]|,/gim.test(evt.target.value))
         ? evt.target.value.replace(/[a-zA-Z]|,/gim, '')
-        : evt.target.value
+        : evt.target.value.slice(0, -1)
     )
   }
   
