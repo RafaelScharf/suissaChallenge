@@ -27,6 +27,11 @@ const Input = () => {
         : replaceDots(evt)
     )
   }
+
+  const handlePaste = evt => {
+    console.log('paste:', {evt}, evt.target.value, evt.key)
+  }
+  
   
   return (
     <div className="Input">
@@ -35,6 +40,7 @@ const Input = () => {
       value={number}
       onKeyPress={handleChangeKeyPress}
       onKeyUp={handleChangeKeyUp}
+      // onPaste={handlePaste}
       ></input>
       <p>{number}</p>
     </div>
