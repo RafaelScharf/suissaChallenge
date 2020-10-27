@@ -26,7 +26,7 @@ const Input = () => {
     )
   }
 
-  
+
   const handleChangeKeyUp = evt => {
     
     console.log('handleChangeKeyUp', {inputValue}, {number})
@@ -49,7 +49,7 @@ const Input = () => {
     }
 
     if (inputValue == "") {
-      inputValue = evt.target.value
+      inputValue = evt.target.value.replace(/[a-zA-Z]|,/gim, '')
       setNumber(inputValue)
       console.log('handleChange', {inputValue}, {number})
     }
