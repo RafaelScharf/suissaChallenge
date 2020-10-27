@@ -20,13 +20,14 @@ const replaceDots = (evt) => {
   if ( evt.keyCode == 8 )
     return evt.target.value.slice(0, -1)
 
+
   console.log('replaceDots: ', {val}, evt.target.value, evt.key)
   return val
     .replace(/[a-zA-Z]|,/gim, '')
     .replace('.', '_')
     .replace(dotRegex, '')
     .replace('_', '.')
-    .replace(/^0+/, '')
+    .replace(/^0{2,}/, '')
 }
 
 export { 

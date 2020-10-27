@@ -29,7 +29,12 @@ const Input = () => {
   }
 
   const handlePaste = evt => {
-    console.log('paste:', {evt}, evt.target.value, evt.key)
+    console.log('paste:', {evt}, evt.target.value, evt.key, evt.clipboardData)
+  }
+
+  const handleChange = evt => {
+    console.log('change:', {evt}, evt.target.value, evt.key, evt.clipboardData)
+    setNumber(evt.target.value)
   }
   
   
@@ -40,7 +45,8 @@ const Input = () => {
       value={number}
       onKeyPress={handleChangeKeyPress}
       onKeyUp={handleChangeKeyUp}
-      // onPaste={handlePaste}
+      onPaste={handlePaste}
+      onChange={handleChange}
       ></input>
       <p>{number}</p>
     </div>
