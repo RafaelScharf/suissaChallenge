@@ -14,7 +14,7 @@ const Input = () => {
   const handleChangeKeyPress = evt => {
     if ( evt.keyCode == 8 ) 
       isBackspace = true
-    console.log('handleChangeKeyPress', {isBackspace}, evt.keyCode, evt.target.value)
+      
     setNumber(
       (isNumberOrDot(evt))
         ? evt.target.value + evt.key
@@ -23,8 +23,6 @@ const Input = () => {
   }
 
   const handleChangeKeyUp = evt => {
-    console.log('handleChangeKeyUp', {isBackspace}, evt.keyCode, evt.target.value)
-    
     if (isBackspace) return false;
     setNumber(
       (countDots(evt) == 0 || isBackspace)
@@ -34,8 +32,6 @@ const Input = () => {
   }
 
   const handleChange = evt => {
-    console.log('change:', evt.keyCode, evt.target.value)
-    console.log({isBackspace}, evt.keyCode)
     if ( isBackspace ){
       isBackspace = false;
       return setNumber(evt.target.value);
