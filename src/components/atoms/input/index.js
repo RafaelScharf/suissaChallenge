@@ -10,6 +10,11 @@ const Input = () => {
   const [number, setNumber] = useState();
 
   const handleChangeKeyPress = evt => {
+    
+    console.log(evt.target.value, evt.key)
+    // if ( evt.keyCode == 8 )
+    //   return setNumber(evt.target.value.split('').slice(0, -1).join())
+
     setNumber(
       (isNumberOrDot(evt))
         ? evt.target.value + evt.key
