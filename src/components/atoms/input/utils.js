@@ -16,10 +16,11 @@ const countDots = (evt) => {
 }
 
 const replaceDots = (evt) => {
-  const val = evt.target.value + evt.key
+  const val = evt.target.value //+ evt.key
   if ( evt.keyCode == 8 )
     return evt.target.value.slice(0, -1)
 
+  console.log('replaceDots: ', {val}, evt.target.value, evt.key)
   return val
     .replace(/[a-zA-Z]|,/gim, '')
     .replace('.', '_')
