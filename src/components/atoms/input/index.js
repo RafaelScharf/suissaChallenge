@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+// import { acceptOnlyNumber, maskFloat, replaceLetter } from "./utils"
 
 const onlyNumbersRegex = /\d/
 const dotRegex = /\./g
