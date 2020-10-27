@@ -1,12 +1,28 @@
 const onlyNumbersRegex = /\d/
 const dotRegex = /\./g
-const isNumberOrDot = (val) => onlyNumbersRegex.test(val) || dotRegex.test(val)
-const countDots = (val) => (val.match(dotRegex) || []).length
-const replaceDots = (val) => val.replace('.', '').replace(dotRegex, '').replace('', '.')
+
+const isNumberOrDot = (evt) => {
+  const val = evt.target.value + evt.key
+  return onlyNumbersRegex.test(evt.key) || dotRegex.test(evt.key)
+
+}
+
+const countDots = (evt) => {
+  const val = evt.target.value + evt.key
+  return (val.match(dotRegex) || []).length
+}
+
+const replaceDots = (evt) => {
+  const val = evt.target.value + evt.key
+  
+  return val
+    .replace(/[a-zA-Z]|,/gim, '')
+    .replace('.', '_')
+    .replace(dotRegex, '')
+    .replace('_', '.')
+}
 
 export { 
-  onlyNumbersRegex,
-  dotRegex,
   isNumberOrDot,
   countDots,
   replaceDots
