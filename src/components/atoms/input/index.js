@@ -34,7 +34,13 @@ const Input = () => {
 
   const handleChange = evt => {
     console.log('change:', {evt}, evt.target.value, evt.key, evt.clipboardData)
-    setNumber(evt.target.value)
+    // setNumber(evt.target.value)
+    
+    setNumber(
+      (/[a-zA-Z]|,/gim.test(evt.target.value))
+        ? 0
+        : evt.target.value
+    )
   }
   
   
