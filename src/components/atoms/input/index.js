@@ -29,9 +29,6 @@ const Input = () => {
     setNumber(
       (countDots(evt) == 0 || isBackspace)
         ? evt.target.value
-        // ? ( evt.keyCode == 8 )
-        //     ? evt.target.value.slice(0, -1)
-        //     : evt.target.value
         : replaceDots(evt)
     )
   }
