@@ -10,8 +10,6 @@ const Input = () => {
   const [number, setNumber] = useState();
 
   const handleChangeKeyPress = evt => {
-    
-    console.log('handleChangeKeyPress:', {evt}, evt.target.value, evt.key)
     setNumber(
       (isNumberOrDot(evt))
         ? evt.target.value + evt.key
@@ -20,7 +18,6 @@ const Input = () => {
   }
 
   const handleChangeKeyUp = evt => {
-    console.log('handleChangeKeyUp:', {evt}, evt.target.value, evt.key)
     setNumber(
       (countDots(evt) == 0)
         ? ( evt.keyCode == 8 )
@@ -30,14 +27,7 @@ const Input = () => {
     )
   }
 
-  const handlePaste = evt => {
-    console.log('paste:', {evt}, evt.target.value, evt.key, evt.clipboardData)
-  }
-
   const handleChange = evt => {
-    console.log('change:', {evt}, evt.target.value, evt.key, evt.clipboardData)
-    // setNumber(evt.target.value)
-    
     setNumber(
       (/[a-zA-Z]|,/gim.test(evt.target.value))
         ? evt.target.value.replace(/[a-zA-Z]|,/gim, '')
@@ -53,7 +43,6 @@ const Input = () => {
       value={number}
       onKeyPress={handleChangeKeyPress}
       onKeyUp={handleChangeKeyUp}
-      onPaste={handlePaste}
       onChange={handleChange}
       ></input>
       <p>{number}</p>
