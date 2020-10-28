@@ -22,7 +22,7 @@ const Input = () => {
     setNumber(
       (isNumberOrDot(evt))
         ? evt.target.value + evt.key
-        : evt.target.value
+        : evt.target.value.replace(/[a-zA-Z]|,|:|\\/gim, '')
     )
   }
 
@@ -49,7 +49,7 @@ const Input = () => {
     }
 
     if (inputValue == "") {
-      inputValue = evt.target.value.replace(/[a-zA-Z]|,/gim, '')
+      inputValue = evt.target.value.replace(/[a-zA-Z]|,|:|\?|=|-|\//gim, '')
       setNumber(inputValue)
       console.log('handleChange', {inputValue}, {number})
     }
@@ -57,7 +57,7 @@ const Input = () => {
     else {
       setNumber(
         (/[a-zA-Z]|,/gim.test(evt.target.value))
-          ? evt.target.value.replace(/[a-zA-Z]|,/gim, '')
+          ? evt.target.value.replace(/[a-zA-Z]|,|:|\\/gim, '')
           : evt.target.value.slice(0, -1)
       )
 
