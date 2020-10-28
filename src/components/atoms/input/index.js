@@ -57,7 +57,7 @@ const Input = () => {
     else {
       setNumber(
         (/[a-zA-Z]|,/gim.test(evt.target.value))
-          ? evt.target.value.replace(/[a-zA-Z]|,|:|\\/gim, '')
+          ? evt.target.value.replace(/[a-zA-Z]|,|:|\?|=|-|\//gim, '')
           : evt.target.value.slice(0, -1)
       )
 
