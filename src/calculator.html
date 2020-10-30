@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Suissa BOTs</title>
+  <link rel="shortcut icon" type="image/x-icon" href="https://bin.bnbstatic.com/static/images/common/favicon.ico" />
+  <!-- Google Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+
+  <!-- CSS Reset -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+
+  <!-- Milligram CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
+
+  <style>
+    .container {
+      position: relative;
+      top: 20px;
+    }
+    li {
+      list-style: none;
+    }
+    .radio-toolbar {
+      text-align: center;
+    }
+    .radio-toolbar input[type="radio"] {
+      opacity: 0;
+      position: fixed;
+      width: 0;
+    }
+    .radio-toolbar label {
+      display: inline-block !important;
+      background-color: rgba(250, 250, 250, 0.05);
+      padding: 10px 20px;
+      /* font-family: sans-serif, Arial;
+      font-size: 16px; */
+      /* border: 1px solid rgb(157, 157, 157); */
+      border-radius: 4px;
+      color: rgb(255, 255, 255);
+      width: 100%;
+    }
+    .radio-toolbar input[type="radio"]:checked + label {
+      
+      background: rgb(2, 192, 118);
+      /* border-radius: 2px; */
+      border-radius: 2px;
+      color: rgb(255, 255, 255);
+      /* background-color:rgb(0, 199, 0);
+      color: #fff; */
+      /* border-color: #4c4; */
+    }
+    .radio-toolbar input[type="radio"][value="short"]:checked + label {
+      color: rgb(255, 255, 255);
+      background-color: rgb(248, 73, 96);
+      border-top-color: rgb(248, 73, 96);
+      border-right-color: rgb(248, 73, 96);
+      border-bottom-color: rgb(248, 73, 96);
+      border-left: none;
+      border-radius: 2px;
+      /* background-color:rgb(255, 85, 85);
+      color: #fff; */
+        /* border-color: rgb(126, 8, 0); */
+    }
+    /* .radio-toolbar input[type="radio"]:focus + label {
+        border: 2px dashed #444;
+    } */
+    .radio-toolbar label:hover {
+      background-color:rgba(250, 250, 250, 0.2);
+      border-radius: 2px;
+    }
+
+    body {
+      background-color: rgb(43, 47, 54);
+      color: #ccc;
+      text-align: center;
+    }
+    body input {
+      color: #ccc;
+    }
+    body a {
+      color: rgb(132, 142, 156);
+      font-weight: bold; 
+      font-size: 30px;
+      text-align: center;
+    }
+    body .container .calculate, 
+    body .container .calculateAVG {
+      margin: 24px 0px 0px;
+      min-width: 0px;
+      appearance: none;
+      user-select: none;
+      cursor: pointer;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      display: inline-flex;
+      -webkit-box-align: center;
+      align-items: center;
+      -webkit-box-pack: center;
+      justify-content: center;
+      box-sizing: border-box;
+      font-family: inherit;
+      text-align: center;
+      text-decoration: none;
+      outline: none;
+      font-weight: bold;
+      font-size: 14px;
+      line-height: 24px;
+      color:#333;
+      border-radius: 4px;
+      padding: 8px 16px;
+      min-height: 32px;
+      border: none;
+      background-image: linear-gradient(rgb(248, 209, 47) 0%, rgb(240, 185, 11) 100%);
+      width: 100%;
+    }
+
+    .hide {
+      display: none !important;
+    }
+
+    .tabs ul li {
+      border-bottom: 2px solid transparent;
+      display: inline-block;
+      width: 50%;
+      margin: 0;
+      padding: 0;
+    }
+    .tabs ul li:hover {
+      border-bottom: 2px solid rgb(240, 185, 11);
+      color: rgb(230, 232, 234);
+      font-weight: 600;
+    }
+  </style>
+</head>
+
+<body>
+  <main class="container">
+
+    <div class="tabs">
+      <ul class="row">
+        <li><a class="tab column" data-name="tab-pnl" href="#pnl">Lucro e Perda</a></li>
+        <li><a class="tab column" data-name="tab-avg" href="#avg">Preço Médio</a></li>
+      </ul>
+    </div>
+
+    <div class="tabs-content">
+      <div id="tab-avg" class="tab-content open-price row hide">
+        <div class="column">
+          <h1>Preço Médio: <span class="avg-price"></span></h1>
+            <ul class="row">
+              <li class="column">entry: $<input type="text" class="entry" value="10000"></li>
+              <li class="column">quantity: $<input type="text" class="quantity" value="10"></li>
+            </ul>
+            <ul class="row">
+              <li class="column">entry: $<input type="text" class="entry" value="9000"></li>
+              <li class="column">quantity: $<input type="text" class="quantity" value="10"></li>
+              <li></li>
+            </ul>
+            <button class="button button-outline calculateAVG">Calculate</button>
+        </div>
+      </div>
+
+      <div id="tab-pnl" class="tab-content calculator row hide">
+
+        <div class="column">
+          <div class="radio-toolbar">
+            <input type="radio" id="radioApple" name="type" value="long" checked>
+            <label for="radioApple">long</label>
+        
+            <input type="radio" id="radioBanana" name="type" value="short">
+            <label for="radioBanana">short</label>
+          </div>
+          
+          <section class=" ">
+            <article class="calculator">
+    
+              <ul>
+                <li>leverage: <input type="text" class="leverage" value="8"></li>
+                <li>entry: $<input type="text" class="entry" value="10792"></li>
+                <li>exit: $<input type="text" class="exit" value="10800"></li>
+                <li>quantity: <input type="text" class="quantity" value="54"></li>
+                <li><button class="button button-outline calculate">Calculate</button></li>
+              </ul>
+            </article>
+          </section>
+          <section class="">
+            <article class="result">
+            <ul>
+              <li>initial margin: <input type="text" class="initialMargin"></li>
+              <li>pnl: <input type="text" class="pnl"></li>
+              <li>roe: <input type="text" class="roe"></li>
+            </ul>
+            </article>
+          </section>
+          </div>
+      </div>
+
+    </div>
+
+      
+  </main>
+  <script>
+    const formatMoney = (val) => new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+        minimumFractionDigits: 2
+      }).format(val)
+
+    const $ = (el) => document.querySelector(el)
+    const $$ = (el) => document.querySelectorAll(el)
+
+    const startTabs = () => {
+      const tabs = $$(".tab")
+      const tabsContent = $$(".tab-content")
+      const hideEl = (el) => el.classList.add('hide')
+      const hideTabs = () => tabsContent.forEach(hideEl)
+      
+      const showTab = (tab) => (evt) => 
+        hideTabs() || $(`#${tab}`).classList.remove('hide')
+
+        
+      // const showTab = (tab) => (evt) => {
+      //   hideTabs() 
+      //   $(`#${tab}`).classList.remove('hide')
+      // }
+
+      const clickToShowTabs = tab => tab.addEventListener("click", showTab(tab.dataset.name))
+      tabs.forEach(clickToShowTabs)
+    }
+
+    const avgPrice = $(".open-price .avg-price")
+    const avgEntry = $$(".open-price .entry")
+    const avgQuantity = $$(".open-price .quantity")
+    const calculateAVGPrice = $(".open-price .calculateAVG") 
+    
+    const leverage = $(".calculator .leverage")
+    const entry = $(".calculator .entry")
+    const exit = $(".calculator .exit")
+    const quantity = $(".calculator .quantity")
+    const initialMarginEl = $(".calculator .initialMargin")
+    const roeEl = $(".calculator .roe")
+    const pnlEl = $(".calculator .pnl") 
+    const calculate = $(".calculator .calculate") 
+    
+    const onlyNumbersRegex = /\d/
+    const dotRegex = /\./g
+    const isNumberOrDot = (val) => onlyNumbersRegex.test(val) || dotRegex.test(val)
+    const countDots = (val) => (val.match(dotRegex) || []).length
+    const replaceDots = (val) => val.replace('.', '_').replaceAll('.', '').replace('_', '.')
+
+    const maskFloat = (evt, input) => 
+      evt.target.value = replaceDots(input.value)
+
+    const acceptOnlyNumber = (input) => 
+      input.addEventListener("keypress", (evt) => 
+        (isNumberOrDot(evt.key)) 
+          ? true 
+          : evt.preventDefault())
+
+    const maskInputToFloat = (input) => 
+      input.addEventListener("keyup", (evt) =>
+        (countDots(input.value) == 0) 
+          ? true
+          : maskFloat(evt, input))
+
+    const maskInput = (input) => {
+      acceptOnlyNumber(input)
+      maskInputToFloat(input)
+    }
+
+    $$("input").forEach(maskInput)
+    
+    startTabs()
+
+
+    const calcInitialMargin = ({entry, quantity, leverage}) => (entry * quantity) / leverage
+    const calcROE = ({entry, exit, leverage}) => (((exit - entry) / entry) * 100) * leverage
+    const calcPNL = ({entry, exit, quantity, leverage}) => 
+      (calcInitialMargin({entry, quantity, leverage}) * (calcROE({entry, exit, leverage}) / 100))
+
+    const sum = (ps) => ps.reduce((a, b) => a + b, 0)
+
+    const mpSUM = ({entry1= 10000, qnt1= 2}, {entry2= 9000, qnt2= 1}) =>
+      ((entry1 * qnt1 + entry2 * qnt2) / (sum([qnt1, qnt2])))
+
+    const printAVGPrice = () => {
+      const [entry1, entry2] = Array.from(avgEntry).map(el => Number(el.value))
+      const [qnt1, qnt2] = Array.from(avgQuantity).map(el => Number(el.value))
+      console.log(mpSUM({entry1, qnt1}, {entry2, qnt2}).toFixed(2), entry1, entry2, qnt1, qnt2)
+      avgPrice.innerHTML = mpSUM({entry1, qnt1}, {entry2, qnt2}).toFixed(2)
+    }
+
+    const calResult = ({leverage, entry, exit, quantity}) => ({
+        initialMargin: calcInitialMargin({entry, quantity, leverage}), 
+        roe: calcROE({entry, exit, leverage}), 
+        pnl: calcPNL({entry, exit, quantity, leverage})
+      }
+    )
+
+    const printResult = (type) => ({leverage, entry, exit, quantity}) => {
+      const {initialMargin, pnl, roe} = calResult({leverage, entry, exit, quantity})
+
+      initialMarginEl.value = formatMoney(initialMargin)
+      pnlEl.value = (type == "long") ? formatMoney(pnl) : formatMoney(pnl * -1)
+      roeEl.value = (type == "long") ? roe.toFixed(2) + '%' : roe.toFixed(2) * -1 + '%'
+    }
+
+    const getType = () => document.querySelector("input[name=type]:checked").value
+
+    calculateAVGPrice.addEventListener("click", () => 
+      printAVGPrice()
+    )
+
+    calculate.addEventListener("click", () => 
+      printResult(getType())({
+        leverage: Number(leverage.value), 
+        entry: Number(entry.value), 
+        exit: Number(exit.value),
+        quantity: Number(quantity.value),
+      })
+    )
+  </script>
+</body>
+
+</html>

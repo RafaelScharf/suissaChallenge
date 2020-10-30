@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 
-const Button = () => {
+const Button = (props) => {
 
   return(
 
     <>
-    <button></button>
+    <button
+    onClick={props.onClick}
+    >{props.text}</button>
     </>
     
 
