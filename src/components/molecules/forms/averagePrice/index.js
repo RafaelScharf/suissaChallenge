@@ -13,8 +13,8 @@ const AvaragePrice = () => {
 
   
   const mpSUM = ({entry1= 10000, quantity1= 2}, {entry2= 9000, quantity2= 1}) => (
-    (Number(entry1 * quantity1) + Number(entry2 * quantity2)) / 
-    (Number(quantity1) + Number(quantity2))
+    (entry1 * quantity1 + entry2 * quantity2) / 
+    (quantity1 + quantity2)
   )
 
   const calculate =  ({entry1= 10000, quantity1= 2}, {entry2= 9000, quantity2= 1}) => {
@@ -24,10 +24,10 @@ const AvaragePrice = () => {
   return(
 
     <>
-    <Input label="entry1 $" childHandleChange={(val) => setEntry1(val)} />
-    <Input label="quantity1" childHandleChange={(val) => setQuantity1(val)} />
-    <Input label="entry2 $" childHandleChange={(val) => setEntry2(val)} />
-    <Input label="quantity2" childHandleChange={(val) => setQuantity2(val)} />
+    <Input label="entry1 $" childHandleChange={(val) => setEntry1(Number(val))} />
+    <Input label="quantity1" childHandleChange={(val) => setQuantity1(Number(val))} />
+    <Input label="entry2 $" childHandleChange={(val) => setEntry2(Number(val))} />
+    <Input label="quantity2" childHandleChange={(val) => setQuantity2(Number(val))} />
     <Button text="Calculate" onClick={() => calculate({entry1, quantity1}, {entry2, quantity2})} />
     {result}
     </>
