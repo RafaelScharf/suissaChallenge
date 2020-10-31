@@ -70,6 +70,7 @@ const Input = (props) => {
     <div className="Input">
       <label>{props.label}</label>
       <input
+      placeholder={props.placeholder}
       value={number}
       onKeyDown={handleChangeKeyPress}
       onKeyUp={handleChangeKeyUp}

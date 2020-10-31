@@ -17,7 +17,7 @@ const calcPNL = ({entry, exit, quantity, leverage}) =>
 
 const ProfitNLoss = () => {
 
-  const [leverage, setLeverage] = useState('')
+  const [leverage, setLeverage] = useState('1')
   const [entry, setEntry] = useState('')
   const [exit, setExit] = useState('')
   const [quantity, setQuantity] = useState('')
@@ -40,11 +40,14 @@ const ProfitNLoss = () => {
 
   return(
     <>
-    <Input label="leverage" childHandleChange={(val) => setLeverage(Number(val))} />
-    <Input label="entry $" childHandleChange={(val) => setEntry(Number(val))} />
-    <Input label="exit $" childHandleChange={(val) => setExit(Number(val))} />
-    <Input label="quantity" childHandleChange={(val) => setQuantity(Number(val))} />
-    <Button text="Calculate" onClick={() => calculate({leverage, entry, exit, quantity})} />
+    <Input placeholder="leverage" label="leverage" childHandleChange={(val) => setLeverage(Number(val))} />
+    <Input placeholder="entry" label="entry $" childHandleChange={(val) => setEntry(Number(val))} />
+    <Input placeholder="exit" label="exit $" childHandleChange={(val) => setExit(Number(val))} />
+    <Input placeholder="quantity" label="quantity" childHandleChange={(val) => setQuantity(Number(val))} />
+    <Button 
+      class="button button-outline calculateAVG" 
+      text="Calculate" 
+      onClick={() => calculate({leverage, entry, exit, quantity})} />
 
     <hr />
     initialMargin: {initialMargin}
