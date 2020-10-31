@@ -131,6 +131,12 @@ li {
   width: 100%;
 }
 
+button.tab{
+  color: #fff !important;
+  background: transparent !important;
+  margin: 0px !important;
+}
+
 .hide {
   display: none !important;
 }

@@ -18,15 +18,33 @@ const hideTabs = () => tabsContent.forEach(hideEl)
   
 const showTab = (tab) => (evt) => {
   
+  const elTabAvg =  $('#tab-avg');
+  const elTabPnl =  $('#tab-pnl');
+
+  const elTab = $(`#${tab}`);
   
   if(tab === 'tab-pnl'){
-    $('#tab-avg').classList.add('hide') 
-    $(`#${tab}`).classList.remove('hide')
-    console.log( $('#tab-avg'))
+
+    elTabAvg.classList.add('hide') 
+   
+    elTab.classList.contains('hide') === false
+      ?elTab.classList.add('hide') 
+      :elTab.classList.remove('hide')
+
+    
+    console.log( $(`#${tab}`).classList.contains('hide'))
+    console.log( $('#tab-pnl'))
+
   }
-  if(tab == 'tab-avg'){
-    $('#tab-pnl').classList.add('hide')
-    $(`#${tab}`).classList.remove('hide')
+  
+  if(tab === 'tab-avg'){
+
+    elTabPnl.classList.add('hide')
+
+    elTab.classList.contains('hide') === false
+    ?elTab.classList.add('hide') 
+    :elTab.classList.remove('hide')
+
     console.log( $('#tab-pnl'))
   }
   /*
@@ -55,7 +73,7 @@ const Calculator = () => {
     
     <div className="tabs">
       <ul className="row">
-        <li><span><Button text="Lucro e Perda" className="tab column" dataName="tab-pnl" href="#pnl" onClick={showTab(tabPnl)}/></span></li>
+        <li><Button text="Lucro e Perda" className="tab column" dataName="tab-pnl" href="#pnl" onClick={showTab(tabPnl)}/></li>
         <li><Button text="Preço Médio" className="tab column" dataName="tab-avg" href="#avg" onClick={showTab(tabAvg)}/></li>
       </ul>
       
