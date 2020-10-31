@@ -17,12 +17,24 @@ const hideTabs = () => tabsContent.forEach(hideEl)
 
   
 const showTab = (tab) => (evt) => {
-  console.log({tab})
-  evt.preventDefault()
-  hideTabs() 
-  $(`#${tab}`).classList.remove('hide')
-  $$(`.tabs li`).forEach(t => t.classList.remove('tab-active'))
-  $(`a[data-name=${tab}]`).closest('li').classList.add('tab-active')
+  
+  
+  if(tab === 'tab-pnl'){
+    $('#tab-avg').classList.add('hide') 
+    $(`#${tab}`).classList.remove('hide')
+    console.log( $('#tab-avg'))
+  }
+  if(tab == 'tab-avg'){
+    $('#tab-pnl').classList.add('hide')
+    $(`#${tab}`).classList.remove('hide')
+    console.log( $('#tab-pnl'))
+  }
+
+    
+  
+ 
+ 
+  
   
 }
 
@@ -33,18 +45,6 @@ const Calculator = () => {
 
   const [tabAvg, setTabAvg] = useState('tab-avg');
   const [tabPnl, setTabPnl] = useState('tab-pnl');
-
-  const tabEffect = (tab) =>{
-
-
-    $(`#${tab}`).classList.remove('hide')
-    $$(`.tabs li`).forEach(t => t.classList.remove('tab-active'))
-    $(`a[data-name=${tab}]`).closest('li').classList.add('tab-active')
-    
-    
-      
-
-  }
 
 
   return(
