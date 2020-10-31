@@ -29,12 +29,13 @@ const showTab = (tab) => (evt) => {
     $(`#${tab}`).classList.remove('hide')
     console.log( $('#tab-pnl'))
   }
-
-    
-  
- 
- 
-  
+  /*
+  console.log({tab})
+  evt.preventDefault()
+  hideTabs() 
+  $(`#${tab}`).classList.remove('hide')
+  $$(`.tabs li`).forEach(t => t.classList.remove('tab-active'))
+  $(`a[data-name=${tab}]`).closest('li').classList.add('tab-active')*/ 
   
 }
 
