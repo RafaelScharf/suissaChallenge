@@ -6,10 +6,15 @@ const Button = (props) => {
 
     <>
     <button
-    onClick={props.onClick}
-    >{props.text}</button>
+      onClick={props.onClick}
+      className={props.className}
+      data-name={props.dataName}
+      href={props.href}
+    >
+      {props.text}
+    </button>
     </>
-    
+   
 
   )
 
