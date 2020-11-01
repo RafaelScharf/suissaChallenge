@@ -28,12 +28,8 @@ const showTab = (tab) => (evt) => {
     elTabAvg.classList.add('hide') 
    
     elTab.classList.contains('hide') === false
-      ?elTab.classList.add('hide') 
-      :elTab.classList.remove('hide')
-
-    
-    console.log( $(`#${tab}`).classList.contains('hide'))
-    console.log( $('#tab-pnl'))
+      ? elTab.classList.add('hide') 
+      : elTab.classList.remove('hide')
 
   }
   
@@ -45,7 +41,7 @@ const showTab = (tab) => (evt) => {
     ?elTab.classList.add('hide') 
     :elTab.classList.remove('hide')
 
-    console.log( $('#tab-pnl'))
+    
   }
   /*
   console.log({tab})
@@ -72,7 +68,7 @@ const Calculator = () => {
       
     
     <div className="tabs">
-      <ul className="row">
+      <ul className="row">        
         <li><Button text="Lucro e Perda" className="tab column" dataName="tab-pnl" href="#pnl" onClick={showTab(tabPnl)}/></li>
         <li><Button text="Preço Médio" className="tab column" dataName="tab-avg" href="#avg" onClick={showTab(tabAvg)}/></li>
       </ul>
