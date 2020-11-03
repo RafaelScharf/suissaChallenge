@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import AveragePrice from '../../../molecules/forms/averagePrice/index'
 import ProfitNLoss from '../../../molecules/forms/profitNLoss/index'
 import Button from '../../../atoms/button/index'
-
-
+/* 
 const $ = (el) => document.querySelector(el)
 const $$ = (el) => document.querySelectorAll(el)
 
@@ -12,10 +11,10 @@ const tabsContent = $$(".tab-content")
 const hideEl = (el) => el.classList.add('hide')
 const hideTabs = () => tabsContent.forEach(hideEl)
 
-// const showTab = (tab) => (evt) => 
-//   hideTabs() || $(`#${tab}`).classList.remove('hide')
+ const showTab = (tab) => (evt) => 
+  hideTabs() || $(`#${tab}`).classList.remove('hide')
 
-  
+
 const showTab = (tab) => (evt) => {
   
   const elTabAvg =  $('#tab-avg');
@@ -27,6 +26,7 @@ const showTab = (tab) => (evt) => {
 
     elTabAvg.classList.add('hide') 
    
+<<<<<<< HEAD
     !(elTab.classList.contains('hide'))
       ? elTab.classList.add('hide') 
       : elTab.classList.remove('hide')
@@ -34,6 +34,11 @@ const showTab = (tab) => (evt) => {
     
     console.log( $(`#${tab}`).classList.contains('hide'))
     console.log( $('#tab-pnl'))
+=======
+    elTab.classList.contains('hide') === false
+      ? elTab.classList.add('hide') 
+      : elTab.classList.remove('hide')
+>>>>>>> 906cc49d89a3bcc4e97273e3d675540075d647ff
 
   }
   
@@ -45,62 +50,78 @@ const showTab = (tab) => (evt) => {
       ? elTab.classList.add('hide') 
       : elTab.classList.remove('hide')
 
-    console.log( $('#tab-pnl'))
+    
   }
-  /*
+ 
   console.log({tab})
   evt.preventDefault()
   hideTabs() 
   $(`#${tab}`).classList.remove('hide')
   $$(`.tabs li`).forEach(t => t.classList.remove('tab-active'))
-  $(`a[data-name=${tab}]`).closest('li').classList.add('tab-active')*/ 
+  $(`a[data-name=${tab}]`).closest('li').classList.add('tab-active')
   
 }
-
-const clickToShowTabs = tab => tab.addEventListener("click", showTab(tab.dataset.name))
-tabs.forEach(clickToShowTabs)
-
+*/ 
+//const clickToShowTabs = tab => tab.addEventListener("click", showTab(tab.dataset.name))
+//tabs.forEach(clickToShowTabs)
 const Calculator = () => {
 
   const [tabAvg, setTabAvg] = useState('tab-avg');
   const [tabPnl, setTabPnl] = useState('tab-pnl');
+  const [hidePnl, setHidePnl] = useState('hide');
+  const [hideAvg, setHideAvg] = useState('hide');
+
+  const showTab2 = (tab) => {
+  
+    if(tab === 'tab-pnl'){
+
+      setHideAvg('hide')
+     
+      hidePnl == ''
+        ? setHidePnl('hide')
+        : setHidePnl('')
+        console.log({tab, hideAvg, hidePnl})
+    }
+    
+    if(tab === 'tab-avg'){
+    
+      setHidePnl('hide')
+     
+      hideAvg === ''
+        ? setHideAvg('hide')
+        : setHideAvg('')
+  
+        console.log({tab, hideAvg, hidePnl})
+    }
+
+  }
 
 
   return(
-
-    <>    
-      
-    
+    <>        
     <div className="tabs">
-      <ul className="row">
-        <li><Button text="Lucro e Perda" className="tab column" dataName="tab-pnl" href="#pnl" onClick={showTab(tabPnl)}/></li>
-        <li><Button text="Preço Médio" className="tab column" dataName="tab-avg" href="#avg" onClick={showTab(tabAvg)}/></li>
+      <ul className="row">        
+        <li><Button text="Lucro e Perda" className="tab column" dataName="tab-pnl" href="#pnl" onClick={() => showTab2(tabPnl)}/></li>
+        <li><Button text="Preço Médio" className="tab column" dataName="tab-avg" href="#avg" onClick={() => showTab2(tabAvg)}/></li>
       </ul>
-      
     </div>
     
     <div className="tabs-content">
-      <div id="tab-avg" className="tab-content open-price row hide">
+      <div id="tab-avg" className="tab-content open-price row">
         <div className="column">
-          <AveragePrice />
+          <AveragePrice className={hideAvg} />
         </div>
       </div>
       
     
-      <div id="tab-pnl" className="tab-content calculator row hide">
-        
+      <div id="tab-pnl" className="tab-content calculator row">
         <div className="column">
-          <ProfitNLoss />
+          <ProfitNLoss className={hidePnl} />
         </div>
       </div>
     </div>
-    
-
     </>
-    
-
   )
-
 }
 
 export default Calculator;

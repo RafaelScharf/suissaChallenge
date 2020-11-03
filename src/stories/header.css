@@ -17,12 +17,10 @@ svg {
 }
 
 h1 {
-  font-weight: 900;
-  font-size: 20px;
-  line-height: 1;
-  margin: 6px 0 6px 10px;
-  display: inline-block;
-  vertical-align: top;
+  font-weight: 300;
+  font-size: 4.6rem;
+  line-height: 1.2;
+ 
 }
 
 button + button {
@@ -90,6 +88,9 @@ li {
   background-color: rgb(43, 47, 54);
   color: #ccc;
   text-align: center;
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-bottom: 12px;
 }
 #root input {
   color: #ccc;
@@ -137,6 +138,15 @@ button.tab{
   margin: 0px !important;
 }
 
+@media only screen and (max-width : 859px) {
+  ul.row 
+  {
+    flex-direction: row !important;
+  }
+}
+
+
+
 .hide {
   display: none !important;
 }
@@ -151,5 +161,7 @@ button.tab{
 .tabs ul li:hover {
   border-bottom: 2px solid rgb(240, 185, 11);
   color: rgb(230, 232, 234);
-  font-weight: 600;
+  font-weight: 
+  ;
 }
+

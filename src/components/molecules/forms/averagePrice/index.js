@@ -3,7 +3,7 @@ import Input from '../../../atoms/input/index'
 import Button from '../../../atoms/button/index'
 
 
-const AvaragePrice = () => {
+const AvaragePrice = (props) => {
 
   const [entry1, setEntry1] = useState('')
   const [quantity1, setQuantity1] = useState('')
@@ -18,18 +18,21 @@ const AvaragePrice = () => {
   )
 
   const calculate =  ({entry1= 10000, quantity1= 2}, {entry2= 9000, quantity2= 1}) => {
-    setResult(mpSUM({entry1, quantity1}, {entry2, quantity2}))
+    setResult(mpSUM({entry1, quantity1}, {entry2, quantity2}).toFixed(2))
   }
 
   return(
 
     <>
+    <span className={props.className}>
+    <h1>Preço Médio: <span class="avg-price">{result}</span></h1>
+
     <Input label="entry1 $" childHandleChange={(val) => setEntry1(Number(val))} />
     <Input label="quantity1" childHandleChange={(val) => setQuantity1(Number(val))} />
     <Input label="entry2 $" childHandleChange={(val) => setEntry2(Number(val))} />
     <Input label="quantity2" childHandleChange={(val) => setQuantity2(Number(val))} />
     <Button text="Calculate" onClick={() => calculate({entry1, quantity1}, {entry2, quantity2})} />
-    {result}
+    </span>
     </>
     
 
