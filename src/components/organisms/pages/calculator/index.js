@@ -27,9 +27,9 @@ const showTab = (tab) => (evt) => {
 
     elTabAvg.classList.add('hide') 
    
-    elTab.classList.contains('hide') === false
-      ?elTab.classList.add('hide') 
-      :elTab.classList.remove('hide')
+    !(elTab.classList.contains('hide'))
+      ? elTab.classList.add('hide') 
+      : elTab.classList.remove('hide')
 
     
     console.log( $(`#${tab}`).classList.contains('hide'))
@@ -41,9 +41,9 @@ const showTab = (tab) => (evt) => {
 
     elTabPnl.classList.add('hide')
 
-    elTab.classList.contains('hide') === false
-    ?elTab.classList.add('hide') 
-    :elTab.classList.remove('hide')
+    !(elTab.classList.contains('hide'))
+      ? elTab.classList.add('hide') 
+      : elTab.classList.remove('hide')
 
     console.log( $('#tab-pnl'))
   }
