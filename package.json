@@ -68,7 +68,7 @@
   },
   "scripts": {
     "start-react": "react-scripts start",
-    "start": "react-scripts start",
+    "start": "start-storybook -p 6006",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --watch",
     "storybook": "start-storybook -p 6006",
