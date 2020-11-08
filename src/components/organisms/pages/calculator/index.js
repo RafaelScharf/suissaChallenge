@@ -64,7 +64,6 @@ const Calculator = () => {
   const showTab2 = (tab) => {
   
     if(tab === 'tab-pnl'){
-
       setHideAvg('hide')
      
       hidePnl == ''

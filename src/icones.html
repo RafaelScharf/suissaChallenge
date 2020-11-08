@@ -1,0 +1,136 @@
+<div class="category-menu">
+	<ul class="list-category">
+		<li class="item-category" id="icone1"><a href="/category/blog/cappucino/"><img id="img-1" src="/wp-content/uploads/2020/11/icone-1-1.png" ></a></li>
+		<li class="item-category" id="icone2"><a href="/category/blog/latte/"><img id="img-2" src="/wp-content/uploads/2020/11/icone-2-1.png"></a></li>
+		<li class="item-category" id="icone3"><a href="/category/blog/americano/"><img id="img-3" src="/wp-content/uploads/2020/11/icone-3-1.png"></a></li>
+		<li class="item-category" id="icone4"><a href="/category/blog/afogato/"><img id="img-4" src="/wp-content/uploads/2020/11/icone-4-1.png"></a></li>
+		<li class="item-category" id="icone5"><a href="/category/blog/ristretto/"><img id="img-5" src="/wp-content/uploads/2020/11/icone-5-1.png"></a></li>
+		<li class="item-category" id="icone6"><a href="/category/blog/expresso/"><img id="img-6" src="/wp-content/uploads/2020/11/icone-6-1.png"></a></li>
+	</ul>
+</div>
+
+<style>
+  
+
+	div ul.list-category {
+		list-style: none;
+		margin: 0;
+		width:50vw;
+		display: flex;
+	}
+  div ul.list-category li.item-category:hover  {
+   
+  }
+	
+	div ul li.item-category {
+		width:10vw!important;
+	
+	}
+	div ul li.item-category:hover {
+		transform: scale(1.3);
+	}
+	#custom_html-2 h3{
+		display: none;
+	}
+
+</style>
+
+<script>
+  
+ 
+  const icones = document.querySelectorAll('.list-category li a img');
+  const icone1 = document.querySelector('#icone1');
+  const icone2 = document.querySelector('#icone2');
+  const icone3 = document.querySelector('#icone3');
+  const icone4 = document.querySelector('#icone4');
+  const icone5 = document.querySelector('#icone5');
+  const icone6 = document.querySelector('#icone6');
+  console.log(icone1)
+
+  //icone1
+  icone1.addEventListener('mouseover', (e) => {
+
+    const img = document.querySelector('#img-1')
+    img.src = "/wp-content/uploads/2020/11/icone-1-2.png"
+
+  })
+  icone1.addEventListener('mouseout', (e) => {
+
+    const img = document.querySelector('#img-1')
+    img.src = "/wp-content/uploads/2020/11/icone-1-1.png"
+
+  })
+
+  //icone2
+  icone2.addEventListener('mouseover', (e) => {
+
+  const img = document.querySelector('#img-2')
+  img.src = "/wp-content/uploads/2020/11/icone-2-2.png"
+
+  })
+  icone2.addEventListener('mouseout', (e) => {
+
+    const img = document.querySelector('#img-2')
+    img.src = "/wp-content/uploads/2020/11/icone-2-1.png"
+
+  })
+
+  //ICONE 3
+  icone3.addEventListener('mouseover', (e) => {
+
+  const img = document.querySelector('#img-3')
+  img.src = "/wp-content/uploads/2020/11/icone-3-2.png"
+
+  })
+  icone3.addEventListener('mouseout', (e) => {
+
+    const img = document.querySelector('#img-3')
+    img.src = "/wp-content/uploads/2020/11/icone-3-1.png"
+
+  })
+  //ICONE 4
+  icone4.addEventListener('mouseover', (e) => {
+
+  const img = document.querySelector('#img-4')
+  img.src = "/wp-content/uploads/2020/11/icone-4-2.png"
+
+  })
+  icone4.addEventListener('mouseout', (e) => {
+
+    const img = document.querySelector('#img-4')
+    img.src = "/wp-content/uploads/2020/11/icone-4-1.png"
+
+  })
+  //ICONE 5
+  icone5.addEventListener('mouseover', (e) => {
+
+  const img = document.querySelector('#img-5')
+  img.src = "/wp-content/uploads/2020/11/icone-5-2.png"
+
+  })
+  icone5.addEventListener('mouseout', (e) => {
+
+    const img = document.querySelector('#img-5')
+    img.src = "/wp-content/uploads/2020/11/icone-5-1.png"
+
+  })
+  //ICONE 6
+  icone6.addEventListener('mouseover', (e) => {
+
+  const img = document.querySelector('#img-6')
+  img.src = "/wp-content/uploads/2020/11/icone-6-2.png"
+
+  })
+  icone6.addEventListener('mouseout', (e) => {
+
+    const img = document.querySelector('#img-6')
+    img.src = "/wp-content/uploads/2020/11/icone-6-1.png"
+
+  })
+
+  
+  
+
+
+
+</script>
