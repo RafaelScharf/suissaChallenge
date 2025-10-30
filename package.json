@@ -71,7 +71,6 @@
     "start": "start-storybook -p 6006",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --watch",
-    "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
   "eslintConfig": {
